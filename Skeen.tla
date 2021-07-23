@@ -32,9 +32,9 @@ VARIABLES
 pvars == <<clock, phase, localTS, globalTS, delivered>>
 vars == <<clock, phase, localTS, globalTS, delivered, incoming, sent>>
 ----------------------------------------------------------------------------
-MaxTS == Cardinality(Msg) * Cardinality(Proc)
+MaxCounter == Cardinality(Msg) * Cardinality(Proc)
 
-TS == [c : 0 .. MaxTS, p : Proc] \* c for counter
+TS == [c : 0 .. MaxCounter, p : Proc] \* c for counter
 
 GT(u, v) == \* Is u > v?
     \/ u.c > v.c
@@ -63,7 +63,7 @@ SendAndRemove(smsg, sender, rmsg) ==
                                                  ELSE incoming[p]]
 ----------------------------------------------------------------------------
 TypeOK ==
-    /\ clock     \in [Proc -> 0 .. MaxTS]
+    /\ clock     \in [Proc -> 0 .. MaxCounter]
     /\ phase     \in [Proc -> [Msg -> {"START", "PROPOSED", "COMMITTED"}]]
     /\ localTS   \in [Proc -> [Msg -> TS]]
     /\ globalTS  \in [Proc -> [Msg -> TS]]
@@ -115,6 +115,7 @@ Deliver(p) == \* When p \in Proc receives all PROPOSE for some m \in Msg
                                         => GT(localTS[p][pm], globalTS'[p][rm])}
                IN  delivered' = [delivered EXCEPT ![p] = [pm \in Msg |->
                                     IF pm \in readym THEN TRUE ELSE @[pm]]]
+                   \* TODO: deliver in globalTS[p][m] order (using deliver sequence)
             /\ UNCHANGED <<localTS, sent, incoming>>
 ----------------------------------------------------------------------------
 Next ==
@@ -140,6 +141,10 @@ SameGTS ==
     \A p1, p2 \in Proc, m \in Msg:
         (phase[p1][m] = "COMMITTED" /\ phase[p2][m] = "COMMITTED")
             => globalTS[p1][m] = globalTS[p2][m]
+
+(*
+TODO: Invariant: atomic multicast
+*)
 ----------------------------------------------------------------------------
 THEOREM TypeTheorem == Spec => []TypeOK
 
@@ -148,6 +153,6 @@ THEOREM UniqueGTSTheorem == Spec => []UniqueGTS
 THEOREM SameGTSTheorem == Spec => []SameGTS
 =============================================================================
 \* Modification History
-\* Last modified Fri Jul 23 21:11:47 CST 2021 by hengxin
+\* Last modified Sat Jul 24 07:18:44 CST 2021 by hengxin
 \* Last modified Thu Jul 08 20:18:10 CST 2021 by eric
 \* Created Sat Jun 26 16:04:39 CST 2021 by eric

@@ -1042,44 +1042,47 @@
  clock ,\, phase ,\, localTS ,\, globalTS ,\, delivered ,\, incoming ,\, sent
  {\rangle}}%
 \@x{\makebox[0pt][r]{\scriptsize 34\hspace{1em}}}\midbar\@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 35\hspace{1em}} TS \.{\defeq} [ c \.{:} 0
- \.{\dotdot} Cardinality ( Msg ) ,\, p \.{:} Proc ]}%
+ \@x{\makebox[0pt][r]{\scriptsize 35\hspace{1em}} MaxCounter \.{\defeq}
+ Cardinality ( Msg ) \.{*} Cardinality ( Proc )}%
+\@pvspace{8.0pt}%
+ \@x{\makebox[0pt][r]{\scriptsize 37\hspace{1em}} TS \.{\defeq} [ c \.{:} 0
+ \.{\dotdot} MaxCounter ,\, p \.{:} Proc ]}%
 \@y{\@s{0}%
  \ensuremath{c} for counter
 }%
 \@xx{}%
 \@pvspace{8.0pt}%
-\@x{\makebox[0pt][r]{\scriptsize 37\hspace{1em}} GT ( u ,\, v ) \.{\defeq}}%
+\@x{\makebox[0pt][r]{\scriptsize 39\hspace{1em}} GT ( u ,\, v ) \.{\defeq}}%
 \@y{\@s{0}%
  Is \ensuremath{u \.{>} v}\.{?}
 }%
 \@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 38\hspace{1em}}\@s{26.24} \.{\lor} u . c
+ \@x{\makebox[0pt][r]{\scriptsize 40\hspace{1em}}\@s{26.24} \.{\lor} u . c
  \.{>} v . c}%
- \@x{\makebox[0pt][r]{\scriptsize 39\hspace{1em}}\@s{26.24} \.{\lor} \.{\land}
+ \@x{\makebox[0pt][r]{\scriptsize 41\hspace{1em}}\@s{26.24} \.{\lor} \.{\land}
  u . c \.{=} v . c}%
- \@x{\makebox[0pt][r]{\scriptsize 40\hspace{1em}}\@s{37.35} \.{\land} Priority
+ \@x{\makebox[0pt][r]{\scriptsize 42\hspace{1em}}\@s{37.35} \.{\land} Priority
  [ u . p ] \.{>} Priority [ v . p ]}%
 \@pvspace{8.0pt}%
- \@x{\makebox[0pt][r]{\scriptsize 42\hspace{1em}} MaxV ( vs ) \.{\defeq}
+ \@x{\makebox[0pt][r]{\scriptsize 44\hspace{1em}} MaxV ( vs ) \.{\defeq}
  {\CHOOSE} u \.{\in} vs \.{:} \A\, v \.{\in} vs \.{:} u \.{\neq} v
  \.{\implies} GT ( u ,\, v )}%
-\@x{\makebox[0pt][r]{\scriptsize 43\hspace{1em}}}\midbar\@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 44\hspace{1em}} Message \.{\defeq} [ type
+\@x{\makebox[0pt][r]{\scriptsize 45\hspace{1em}}}\midbar\@xx{}%
+ \@x{\makebox[0pt][r]{\scriptsize 46\hspace{1em}} Message \.{\defeq} [ type
  \.{:} \{\@w{MULTICAST} \} ,\, m \.{:} Msg ]}%
- \@x{\makebox[0pt][r]{\scriptsize 45\hspace{1em}}\@s{16.4} \.{\cup} [ type
+ \@x{\makebox[0pt][r]{\scriptsize 47\hspace{1em}}\@s{16.4} \.{\cup} [ type
  \.{:} \{\@w{PROPOSE} \} ,\, m \.{:} Msg ,\, p \.{:} Proc ,\, lts \.{:} TS ]}%
 \@pvspace{8.0pt}%
-\@x{\makebox[0pt][r]{\scriptsize 47\hspace{1em}} Send ( msg ) \.{\defeq}}%
+\@x{\makebox[0pt][r]{\scriptsize 49\hspace{1em}} Send ( msg ) \.{\defeq}}%
 \@y{\@s{0}%
  Send \ensuremath{msg \.{\in} Message} to its destination processes
 }%
 \@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 48\hspace{1em}}\@s{21.98} incoming \.{'}
+ \@x{\makebox[0pt][r]{\scriptsize 50\hspace{1em}}\@s{21.98} incoming \.{'}
  \.{=} [ p \.{\in} Proc \.{\mapsto}}%
- \@x{\makebox[0pt][r]{\scriptsize 49\hspace{1em}}\@s{38.38} {\IF} p \.{\in}
+ \@x{\makebox[0pt][r]{\scriptsize 51\hspace{1em}}\@s{38.38} {\IF} p \.{\in}
  Dest [ msg . m ] \.{\THEN} incoming [ p ] \.{\cup} \{ msg \}}%
- \@x{\makebox[0pt][r]{\scriptsize 50\hspace{1em}}\@s{125.15} \.{\ELSE}
+ \@x{\makebox[0pt][r]{\scriptsize 52\hspace{1em}}\@s{125.15} \.{\ELSE}
  incoming [ p ] ]}%
 \@pvspace{8.0pt}%
 \begin{lcom}{0}%
@@ -1094,174 +1097,179 @@ Precondition: \ensuremath{sender \.{\in} Dest[msg.m]
 }%
 \end{cpar}%
 \end{lcom}%
- \@x{\makebox[0pt][r]{\scriptsize 57\hspace{1em}} SendAndRemove ( smsg ,\,
+ \@x{\makebox[0pt][r]{\scriptsize 59\hspace{1em}} SendAndRemove ( smsg ,\,
  sender ,\, rmsg ) \.{\defeq}}%
- \@x{\makebox[0pt][r]{\scriptsize 58\hspace{1em}}\@s{16.4} incoming \.{'}
+ \@x{\makebox[0pt][r]{\scriptsize 60\hspace{1em}}\@s{16.4} incoming \.{'}
  \.{=} [ p \.{\in} Proc \.{\mapsto}}%
- \@x{\makebox[0pt][r]{\scriptsize 59\hspace{1em}}\@s{32.8} {\IF} p \.{=}
+ \@x{\makebox[0pt][r]{\scriptsize 61\hspace{1em}}\@s{32.8} {\IF} p \.{=}
  sender \.{\THEN} ( incoming [ sender ] \.{\cup} \{ smsg \} )
  \.{\,\backslash\,} \{ rmsg \}}%
- \@x{\makebox[0pt][r]{\scriptsize 60\hspace{1em}}\@s{93.34} \.{\ELSE} {\IF} p
+ \@x{\makebox[0pt][r]{\scriptsize 62\hspace{1em}}\@s{93.34} \.{\ELSE} {\IF} p
  \.{\in} Dest [ smsg . m ] \.{\THEN} incoming [ p ] \.{\cup} \{ smsg \}}%
- \@x{\makebox[0pt][r]{\scriptsize 61\hspace{1em}}\@s{215.51} \.{\ELSE}
+ \@x{\makebox[0pt][r]{\scriptsize 63\hspace{1em}}\@s{215.51} \.{\ELSE}
  incoming [ p ] ]}%
-\@x{\makebox[0pt][r]{\scriptsize 62\hspace{1em}}}\midbar\@xx{}%
-\@x{\makebox[0pt][r]{\scriptsize 63\hspace{1em}} TypeOK \.{\defeq}}%
- \@x{\makebox[0pt][r]{\scriptsize 64\hspace{1em}}\@s{16.4} \.{\land}\@s{9.74}
- clock\@s{18.20} \.{\in} [ Proc \.{\rightarrow} 0 \.{\dotdot} Cardinality (
- Msg ) ]}%
- \@x{\makebox[0pt][r]{\scriptsize 65\hspace{1em}}\@s{16.4} \.{\land}\@s{9.74}
+\@x{\makebox[0pt][r]{\scriptsize 64\hspace{1em}}}\midbar\@xx{}%
+\@x{\makebox[0pt][r]{\scriptsize 65\hspace{1em}} TypeOK \.{\defeq}}%
+ \@x{\makebox[0pt][r]{\scriptsize 66\hspace{1em}}\@s{16.4} \.{\land}\@s{9.74}
+ clock\@s{18.20} \.{\in} [ Proc \.{\rightarrow} 0 \.{\dotdot} MaxCounter ]}%
+ \@x{\makebox[0pt][r]{\scriptsize 67\hspace{1em}}\@s{16.4} \.{\land}\@s{9.74}
  phase\@s{15.46} \.{\in} [ Proc \.{\rightarrow} [ Msg \.{\rightarrow}
  \{\@w{START} ,\,\@w{PROPOSED} ,\,\@w{COMMITTED} \} ] ]}%
- \@x{\makebox[0pt][r]{\scriptsize 66\hspace{1em}}\@s{16.4} \.{\land}\@s{9.74}
+ \@x{\makebox[0pt][r]{\scriptsize 68\hspace{1em}}\@s{16.4} \.{\land}\@s{9.74}
  localTS\@s{7.35} \.{\in} [ Proc \.{\rightarrow} [ Msg \.{\rightarrow} TS ]
  ]}%
- \@x{\makebox[0pt][r]{\scriptsize 67\hspace{1em}}\@s{16.4} \.{\land}\@s{9.74}
+ \@x{\makebox[0pt][r]{\scriptsize 69\hspace{1em}}\@s{16.4} \.{\land}\@s{9.74}
  globalTS\@s{2.24} \.{\in} [ Proc \.{\rightarrow} [ Msg \.{\rightarrow} TS ]
  ]}%
- \@x{\makebox[0pt][r]{\scriptsize 68\hspace{1em}}\@s{16.4} \.{\land}\@s{9.74}
+ \@x{\makebox[0pt][r]{\scriptsize 70\hspace{1em}}\@s{16.4} \.{\land}\@s{9.74}
  delivered\@s{1.76} \.{\in} [ Proc \.{\rightarrow} [ Msg \.{\rightarrow}
  {\BOOLEAN} ] ]}%
- \@x{\makebox[0pt][r]{\scriptsize 69\hspace{1em}}\@s{16.4} \.{\land}\@s{9.74}
+ \@x{\makebox[0pt][r]{\scriptsize 71\hspace{1em}}\@s{16.4} \.{\land}\@s{9.74}
  incoming \.{\in} [ Proc \.{\rightarrow} {\SUBSET} Message ]}%
- \@x{\makebox[0pt][r]{\scriptsize 70\hspace{1em}}\@s{16.4} \.{\land}\@s{9.74}
+ \@x{\makebox[0pt][r]{\scriptsize 72\hspace{1em}}\@s{16.4} \.{\land}\@s{9.74}
  sent\@s{20.5} \.{\subseteq} Msg}%
-\@x{\makebox[0pt][r]{\scriptsize 71\hspace{1em}}}\midbar\@xx{}%
-\@x{\makebox[0pt][r]{\scriptsize 72\hspace{1em}} Init \.{\defeq}}%
- \@x{\makebox[0pt][r]{\scriptsize 73\hspace{1em}}\@s{16.4} \.{\land}
+\@x{\makebox[0pt][r]{\scriptsize 73\hspace{1em}}}\midbar\@xx{}%
+\@x{\makebox[0pt][r]{\scriptsize 74\hspace{1em}} Init \.{\defeq}}%
+ \@x{\makebox[0pt][r]{\scriptsize 75\hspace{1em}}\@s{16.4} \.{\land}
  clock\@s{18.20} \.{=} [ p\@s{4.09} \.{\in} Proc \.{\mapsto} 0 ]}%
- \@x{\makebox[0pt][r]{\scriptsize 74\hspace{1em}}\@s{16.4} \.{\land}
+ \@x{\makebox[0pt][r]{\scriptsize 76\hspace{1em}}\@s{16.4} \.{\land}
  phase\@s{15.46} \.{=} [ p\@s{4.09} \.{\in} Proc \.{\mapsto} [ m \.{\in} Msg
  \.{\mapsto}\@w{START} ] ]}%
- \@x{\makebox[0pt][r]{\scriptsize 75\hspace{1em}}\@s{16.4} \.{\land}
+ \@x{\makebox[0pt][r]{\scriptsize 77\hspace{1em}}\@s{16.4} \.{\land}
  localTS\@s{7.35} \.{=} [ p\@s{4.09} \.{\in} Proc \.{\mapsto} [ m \.{\in} Msg
  \.{\mapsto} [ c \.{\mapsto} 0 ,\, p \.{\mapsto} p ] ] ]}%
- \@x{\makebox[0pt][r]{\scriptsize 76\hspace{1em}}\@s{16.4} \.{\land}
+ \@x{\makebox[0pt][r]{\scriptsize 78\hspace{1em}}\@s{16.4} \.{\land}
  globalTS\@s{2.24} \.{=} [ p\@s{4.10} \.{\in} Proc \.{\mapsto} [ m \.{\in}
  Msg \.{\mapsto} [ c \.{\mapsto} 0 ,\, p \.{\mapsto} p ] ] ]}%
- \@x{\makebox[0pt][r]{\scriptsize 77\hspace{1em}}\@s{16.4} \.{\land}
+ \@x{\makebox[0pt][r]{\scriptsize 79\hspace{1em}}\@s{16.4} \.{\land}
  delivered\@s{1.76} \.{=} [ p\@s{4.10} \.{\in} Proc \.{\mapsto} [ m \.{\in}
  Msg \.{\mapsto} {\FALSE} ] ]}%
- \@x{\makebox[0pt][r]{\scriptsize 78\hspace{1em}}\@s{16.4} \.{\land}
+ \@x{\makebox[0pt][r]{\scriptsize 80\hspace{1em}}\@s{16.4} \.{\land}
  incoming\@s{4.1} \.{=} [ p \.{\in} Proc \.{\mapsto} \{ \} ]}%
- \@x{\makebox[0pt][r]{\scriptsize 79\hspace{1em}}\@s{16.4} \.{\land}
+ \@x{\makebox[0pt][r]{\scriptsize 81\hspace{1em}}\@s{16.4} \.{\land}
  sent\@s{21.65} \.{=} \{ \}}%
-\@x{\makebox[0pt][r]{\scriptsize 80\hspace{1em}}}\midbar\@xx{}%
-\@x{\makebox[0pt][r]{\scriptsize 81\hspace{1em}} Multicast ( m ) \.{\defeq}}%
+\@x{\makebox[0pt][r]{\scriptsize 82\hspace{1em}}}\midbar\@xx{}%
+\@x{\makebox[0pt][r]{\scriptsize 83\hspace{1em}} Multicast ( m ) \.{\defeq}}%
 \@y{\@s{0}%
  Multicast \ensuremath{m \.{\in} Msg
 }}%
 \@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 82\hspace{1em}}\@s{16.4} \.{\land} m \.{\in}
+ \@x{\makebox[0pt][r]{\scriptsize 84\hspace{1em}}\@s{16.4} \.{\land} m \.{\in}
  Msg \.{\,\backslash\,} sent}%
- \@x{\makebox[0pt][r]{\scriptsize 83\hspace{1em}}\@s{16.4} \.{\land} sent
+ \@x{\makebox[0pt][r]{\scriptsize 85\hspace{1em}}\@s{16.4} \.{\land} sent
  \.{'} \.{=} sent \.{\cup} \{ m \}}%
- \@x{\makebox[0pt][r]{\scriptsize 84\hspace{1em}}\@s{16.4} \.{\land} Send ( [
+ \@x{\makebox[0pt][r]{\scriptsize 86\hspace{1em}}\@s{16.4} \.{\land} Send ( [
  type \.{\mapsto}\@w{MULTICAST} ,\, m \.{\mapsto} m ] )}%
- \@x{\makebox[0pt][r]{\scriptsize 85\hspace{1em}}\@s{16.4} \.{\land}
+ \@x{\makebox[0pt][r]{\scriptsize 87\hspace{1em}}\@s{16.4} \.{\land}
  {\UNCHANGED} pvars}%
 \@pvspace{8.0pt}%
-\@x{\makebox[0pt][r]{\scriptsize 87\hspace{1em}} Propose ( p ) \.{\defeq}}%
+\@x{\makebox[0pt][r]{\scriptsize 89\hspace{1em}} Propose ( p ) \.{\defeq}}%
 \@y{\@s{0}%
  When \ensuremath{p \.{\in} Proc} receives a \ensuremath{MULTICAST} for some
  \ensuremath{m \.{\in} Msg
 }}%
 \@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 88\hspace{1em}}\@s{16.4} \E\, msg \.{\in}
+ \@x{\makebox[0pt][r]{\scriptsize 90\hspace{1em}}\@s{16.4} \E\, msg \.{\in}
  incoming [ p ] \.{:}}%
- \@x{\makebox[0pt][r]{\scriptsize 89\hspace{1em}}\@s{27.72} \.{\land}\@s{2.54}
+ \@x{\makebox[0pt][r]{\scriptsize 91\hspace{1em}}\@s{27.72} \.{\land}\@s{2.54}
  msg . type \.{=}\@w{MULTICAST}}%
- \@x{\makebox[0pt][r]{\scriptsize 90\hspace{1em}}\@s{27.72} \.{\land}\@s{2.54}
+ \@x{\makebox[0pt][r]{\scriptsize 92\hspace{1em}}\@s{27.72} \.{\land}\@s{2.54}
  \.{\LET} m \.{\defeq} msg . m}%
- \@x{\makebox[0pt][r]{\scriptsize 91\hspace{1em}}\@s{41.37} \.{\IN} \.{\land}
+ \@x{\makebox[0pt][r]{\scriptsize 93\hspace{1em}}\@s{41.37} \.{\IN} \.{\land}
  Assert ( p \.{\in} Dest [ m ] ,\,\@w{p\ should\ be\ one\ of\ the\
  destination\ process\ of\ m} )}%
- \@x{\makebox[0pt][r]{\scriptsize 92\hspace{1em}}\@s{61.77} \.{\land} clock
+ \@x{\makebox[0pt][r]{\scriptsize 94\hspace{1em}}\@s{61.77} \.{\land} clock
  \.{'} \.{=} [ clock {\EXCEPT} {\bang} [ p ] \.{=} @ \.{+} 1 ]}%
- \@x{\makebox[0pt][r]{\scriptsize 93\hspace{1em}}\@s{61.77} \.{\land} localTS
+ \@x{\makebox[0pt][r]{\scriptsize 95\hspace{1em}}\@s{61.77} \.{\land} localTS
  \.{'} \.{=} [ localTS {\EXCEPT} {\bang} [ p ] [ m ] \.{=} [ c \.{\mapsto}
  clock \.{'} [ p ] ,\, p \.{\mapsto} p ] ]}%
- \@x{\makebox[0pt][r]{\scriptsize 94\hspace{1em}}\@s{61.77} \.{\land} phase
+ \@x{\makebox[0pt][r]{\scriptsize 96\hspace{1em}}\@s{61.77} \.{\land} phase
  \.{'} \.{=} [ phase {\EXCEPT} {\bang} [ p ] [ m ] \.{=}\@w{PROPOSED} ]}%
- \@x{\makebox[0pt][r]{\scriptsize 95\hspace{1em}}\@s{61.77} \.{\land}
+ \@x{\makebox[0pt][r]{\scriptsize 97\hspace{1em}}\@s{61.77} \.{\land}
  SendAndRemove ( [ type \.{\mapsto}\@w{PROPOSE} ,\, m \.{\mapsto} m ,\, p
  \.{\mapsto} p ,\,}%
- \@x{\makebox[0pt][r]{\scriptsize 96\hspace{1em}}\@s{157.14} lts\@s{3.24}
+ \@x{\makebox[0pt][r]{\scriptsize 98\hspace{1em}}\@s{157.14} lts\@s{3.24}
  \.{\mapsto} localTS \.{'} [ p ] [ m ] ] ,\, p ,\, msg )}%
- \@x{\makebox[0pt][r]{\scriptsize 97\hspace{1em}}\@s{61.77} \.{\land}
+ \@x{\makebox[0pt][r]{\scriptsize 99\hspace{1em}}\@s{61.77} \.{\land}
  {\UNCHANGED} {\langle} globalTS ,\, delivered ,\, sent {\rangle}}%
 \@pvspace{8.0pt}%
-\@x{\makebox[0pt][r]{\scriptsize 99\hspace{1em}} Deliver ( p ) \.{\defeq}}%
+\@x{\makebox[0pt][r]{\scriptsize 101\hspace{1em}} Deliver ( p ) \.{\defeq}}%
 \@y{\@s{0}%
  When \ensuremath{p \.{\in} Proc} receives all \ensuremath{PROPOSE} for some
  \ensuremath{m \.{\in} Msg
 }}%
 \@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 100\hspace{1em}}\@s{16.4} \E\, m \.{\in} Msg
+ \@x{\makebox[0pt][r]{\scriptsize 102\hspace{1em}}\@s{16.4} \E\, m \.{\in} Msg
  \.{:}}%
- \@x{\makebox[0pt][r]{\scriptsize 101\hspace{1em}}\@s{27.72} \.{\LET}
+ \@x{\makebox[0pt][r]{\scriptsize 103\hspace{1em}}\@s{27.72} \.{\LET}
  msgofm\@s{4.1} \.{\defeq} \{ msg \.{\in} incoming [ p ] \.{:} msg . type
  \.{=}\@w{PROPOSE} \.{\land} msg . m \.{=} m \}}%
- \@x{\makebox[0pt][r]{\scriptsize 102\hspace{1em}}\@s{48.12} destofm\@s{3.84}
+ \@x{\makebox[0pt][r]{\scriptsize 104\hspace{1em}}\@s{48.12} destofm\@s{3.84}
  \.{\defeq} \{ msg . p \.{:} msg \.{\in} msgofm \}}%
- \@x{\makebox[0pt][r]{\scriptsize 103\hspace{1em}}\@s{52.22} ltsofm\@s{6.89}
+ \@x{\makebox[0pt][r]{\scriptsize 105\hspace{1em}}\@s{52.22} ltsofm\@s{6.89}
  \.{\defeq} \{ msg . lts \.{:} msg \.{\in} msgofm \}}%
- \@x{\makebox[0pt][r]{\scriptsize 104\hspace{1em}}\@s{27.72} \.{\IN}\@s{4.09}
+ \@x{\makebox[0pt][r]{\scriptsize 106\hspace{1em}}\@s{27.72} \.{\IN}\@s{4.09}
  \.{\land} destofm \.{=} Dest [ m ]}%
- \@x{\makebox[0pt][r]{\scriptsize 105\hspace{1em}}\@s{52.22} \.{\land}
+ \@x{\makebox[0pt][r]{\scriptsize 107\hspace{1em}}\@s{52.22} \.{\land}
  globalTS \.{'} \.{=} [ globalTS {\EXCEPT} {\bang} [ p ] [ m ] \.{=} MaxV (
  ltsofm ) ]}%
- \@x{\makebox[0pt][r]{\scriptsize 106\hspace{1em}}\@s{52.22} \.{\land} clock
+ \@x{\makebox[0pt][r]{\scriptsize 108\hspace{1em}}\@s{52.22} \.{\land} clock
  \.{'}\@s{2.74} \.{=} [ clock {\EXCEPT} {\bang} [ p ] \.{=} Max ( clock [ p ]
  ,\, globalTS \.{'} [ p ] [ m ] . c ) ]}%
- \@x{\makebox[0pt][r]{\scriptsize 107\hspace{1em}}\@s{52.22} \.{\land} phase
+ \@x{\makebox[0pt][r]{\scriptsize 109\hspace{1em}}\@s{52.22} \.{\land} phase
  \.{'} \.{=} [ phase {\EXCEPT} {\bang} [ p ] [ m ] \.{=}\@w{COMMITTED} ]}%
- \@x{\makebox[0pt][r]{\scriptsize 108\hspace{1em}}\@s{52.22} \.{\land}
+ \@x{\makebox[0pt][r]{\scriptsize 110\hspace{1em}}\@s{52.22} \.{\land}
  \.{\LET} readym \.{\defeq} \{ rm \.{\in} Msg \.{:}}%
- \@x{\makebox[0pt][r]{\scriptsize 109\hspace{1em}}\@s{147.63} \.{\land} phase
+ \@x{\makebox[0pt][r]{\scriptsize 111\hspace{1em}}\@s{147.63} \.{\land} phase
  \.{'} [ p ] [ rm ] \.{=}\@w{COMMITTED}}%
- \@x{\makebox[0pt][r]{\scriptsize 110\hspace{1em}}\@s{147.63} \.{\land}
+ \@x{\makebox[0pt][r]{\scriptsize 112\hspace{1em}}\@s{147.63} \.{\land}
  delivered [ p ] [ rm ] \.{=} {\FALSE}}%
- \@x{\makebox[0pt][r]{\scriptsize 111\hspace{1em}}\@s{147.63} \.{\land} \A\,
+ \@x{\makebox[0pt][r]{\scriptsize 113\hspace{1em}}\@s{147.63} \.{\land} \A\,
  pm \.{\in} Msg \.{:}}%
- \@x{\makebox[0pt][r]{\scriptsize 112\hspace{1em}}\@s{162.84} phase \.{'} [ p
+ \@x{\makebox[0pt][r]{\scriptsize 114\hspace{1em}}\@s{162.84} phase \.{'} [ p
  ] [ pm ] \.{=}\@w{PROPOSED}}%
- \@x{\makebox[0pt][r]{\scriptsize 113\hspace{1em}}\@s{179.24} \.{\implies} GT
+ \@x{\makebox[0pt][r]{\scriptsize 115\hspace{1em}}\@s{179.24} \.{\implies} GT
  ( localTS [ p ] [ pm ] ,\, globalTS \.{'} [ p ] [ rm ] ) \}}%
- \@x{\makebox[0pt][r]{\scriptsize 114\hspace{1em}}\@s{63.33} \.{\IN} delivered
+ \@x{\makebox[0pt][r]{\scriptsize 116\hspace{1em}}\@s{63.33} \.{\IN} delivered
  \.{'} \.{=} [ delivered {\EXCEPT} {\bang} [ p ] \.{=} [ pm \.{\in} Msg
  \.{\mapsto}}%
- \@x{\makebox[0pt][r]{\scriptsize 115\hspace{1em}}\@s{153.42} {\IF} pm \.{\in}
+ \@x{\makebox[0pt][r]{\scriptsize 117\hspace{1em}}\@s{153.42} {\IF} pm \.{\in}
  readym \.{\THEN} {\TRUE} \.{\ELSE} @ [ pm ] ] ]}%
- \@x{\makebox[0pt][r]{\scriptsize 116\hspace{1em}}\@s{52.22} \.{\land}
+\@x{\makebox[0pt][r]{\scriptsize 118\hspace{1em}}\@s{83.73}}%
+\@y{\@s{0}%
+ \ensuremath{TODO}: deliver in \ensuremath{globalTS[p][m]} order (using
+ deliver sequence)
+}%
+\@xx{}%
+ \@x{\makebox[0pt][r]{\scriptsize 119\hspace{1em}}\@s{52.22} \.{\land}
  {\UNCHANGED} {\langle} localTS ,\, sent ,\, incoming {\rangle}}%
-\@x{\makebox[0pt][r]{\scriptsize 117\hspace{1em}}}\midbar\@xx{}%
-\@x{\makebox[0pt][r]{\scriptsize 118\hspace{1em}} Next \.{\defeq}}%
- \@x{\makebox[0pt][r]{\scriptsize 119\hspace{1em}}\@s{16.4} \.{\lor} \E\, m
+\@x{\makebox[0pt][r]{\scriptsize 120\hspace{1em}}}\midbar\@xx{}%
+\@x{\makebox[0pt][r]{\scriptsize 121\hspace{1em}} Next \.{\defeq}}%
+ \@x{\makebox[0pt][r]{\scriptsize 122\hspace{1em}}\@s{16.4} \.{\lor} \E\, m
  \.{\in} Msg \.{:} Multicast ( m )}%
- \@x{\makebox[0pt][r]{\scriptsize 120\hspace{1em}}\@s{16.4} \.{\lor} \E\,
+ \@x{\makebox[0pt][r]{\scriptsize 123\hspace{1em}}\@s{16.4} \.{\lor} \E\,
  p\@s{3.20} \.{\in} Proc \.{:}}%
- \@x{\makebox[0pt][r]{\scriptsize 121\hspace{1em}}\@s{31.61} \.{\lor} Propose
+ \@x{\makebox[0pt][r]{\scriptsize 124\hspace{1em}}\@s{31.61} \.{\lor} Propose
  ( p )}%
- \@x{\makebox[0pt][r]{\scriptsize 122\hspace{1em}}\@s{31.61} \.{\lor} Deliver
+ \@x{\makebox[0pt][r]{\scriptsize 125\hspace{1em}}\@s{31.61} \.{\lor} Deliver
  ( p )}%
 \@pvspace{8.0pt}%
- \@x{\makebox[0pt][r]{\scriptsize 124\hspace{1em}} Spec \.{\defeq} Init
+ \@x{\makebox[0pt][r]{\scriptsize 127\hspace{1em}} Spec \.{\defeq} Init
  \.{\land} {\Box} [ Next ]_{ vars}}%
-\@x{\makebox[0pt][r]{\scriptsize 125\hspace{1em}}}\midbar\@xx{}%
+\@x{\makebox[0pt][r]{\scriptsize 128\hspace{1em}}}\midbar\@xx{}%
 \begin{lcom}{0}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
  Invariant: Global timestamps are unique for each \ensuremath{m \.{\in} Msg};
  see Section \ensuremath{III}.
 \end{cpar}%
 \end{lcom}%
-\@x{\makebox[0pt][r]{\scriptsize 129\hspace{1em}} UniqueGTS \.{\defeq}}%
- \@x{\makebox[0pt][r]{\scriptsize 130\hspace{1em}}\@s{16.4} \A\, p \.{\in}
+\@x{\makebox[0pt][r]{\scriptsize 132\hspace{1em}} UniqueGTS \.{\defeq}}%
+ \@x{\makebox[0pt][r]{\scriptsize 133\hspace{1em}}\@s{16.4} \A\, p \.{\in}
  Proc ,\, m1 ,\, m2 \.{\in} Msg \.{:}}%
- \@x{\makebox[0pt][r]{\scriptsize 131\hspace{1em}}\@s{27.72} ( m1 \.{\neq} m2
+ \@x{\makebox[0pt][r]{\scriptsize 134\hspace{1em}}\@s{27.72} ( m1 \.{\neq} m2
  \.{\land} phase [ p ] [ m1 ] \.{=}\@w{COMMITTED} \.{\land} phase [ p ] [ m2
  ] \.{=}\@w{COMMITTED} )}%
- \@x{\makebox[0pt][r]{\scriptsize 132\hspace{1em}}\@s{45.55} \.{\implies}
+ \@x{\makebox[0pt][r]{\scriptsize 135\hspace{1em}}\@s{45.55} \.{\implies}
  globalTS [ p ] [ m1 ] \.{\neq} globalTS [ p ] [ m2 ]}%
 \@pvspace{8.0pt}%
 \begin{lcom}{0}%
@@ -1270,40 +1278,46 @@ Precondition: \ensuremath{sender \.{\in} Dest[msg.m]
  timestamp.
 \end{cpar}%
 \end{lcom}%
-\@x{\makebox[0pt][r]{\scriptsize 137\hspace{1em}} SameGTS \.{\defeq}}%
- \@x{\makebox[0pt][r]{\scriptsize 138\hspace{1em}}\@s{16.4} \A\, p1 ,\, p2
+\@x{\makebox[0pt][r]{\scriptsize 140\hspace{1em}} SameGTS \.{\defeq}}%
+ \@x{\makebox[0pt][r]{\scriptsize 141\hspace{1em}}\@s{16.4} \A\, p1 ,\, p2
  \.{\in} Proc ,\, m \.{\in} Msg \.{:}}%
- \@x{\makebox[0pt][r]{\scriptsize 139\hspace{1em}}\@s{27.72} ( phase [ p1 ] [
+ \@x{\makebox[0pt][r]{\scriptsize 142\hspace{1em}}\@s{27.72} ( phase [ p1 ] [
  m ] \.{=}\@w{COMMITTED} \.{\land} phase [ p2 ] [ m ] \.{=}\@w{COMMITTED} )}%
- \@x{\makebox[0pt][r]{\scriptsize 140\hspace{1em}}\@s{43.91} \.{\implies}
+ \@x{\makebox[0pt][r]{\scriptsize 143\hspace{1em}}\@s{43.91} \.{\implies}
  globalTS [ p1 ] [ m ] \.{=} globalTS [ p2 ] [ m ]}%
-\@x{\makebox[0pt][r]{\scriptsize 141\hspace{1em}}}\midbar\@xx{}%
- \@x{\makebox[0pt][r]{\scriptsize 142\hspace{1em}} {\THEOREM} TypeTheorem
+\@pvspace{8.0pt}%
+\begin{lcom}{0}%
+\begin{cpar}{0}{F}{F}{0}{0}{}%
+\ensuremath{TODO}: Invariant: atomic multicast
+\end{cpar}%
+\end{lcom}%
+\@x{\makebox[0pt][r]{\scriptsize 148\hspace{1em}}}\midbar\@xx{}%
+ \@x{\makebox[0pt][r]{\scriptsize 149\hspace{1em}} {\THEOREM} TypeTheorem
  \.{\defeq} Spec \.{\implies} {\Box} TypeOK}%
 \@pvspace{8.0pt}%
- \@x{\makebox[0pt][r]{\scriptsize 144\hspace{1em}} {\THEOREM} UniqueGTSTheorem
+ \@x{\makebox[0pt][r]{\scriptsize 151\hspace{1em}} {\THEOREM} UniqueGTSTheorem
  \.{\defeq} Spec \.{\implies} {\Box} UniqueGTS}%
 \@pvspace{8.0pt}%
- \@x{\makebox[0pt][r]{\scriptsize 146\hspace{1em}} {\THEOREM} SameGTSTheorem
+ \@x{\makebox[0pt][r]{\scriptsize 153\hspace{1em}} {\THEOREM} SameGTSTheorem
  \.{\defeq} Spec \.{\implies} {\Box} SameGTS}%
-\@x{\makebox[0pt][r]{\scriptsize 147\hspace{1em}}}\bottombar\@xx{}%
+\@x{\makebox[0pt][r]{\scriptsize 154\hspace{1em}}}\bottombar\@xx{}%
 \setboolean{shading}{false}
 \begin{lcom}{0}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
-\ensuremath{\.{\,\backslash\,}}* Modification History
+\ensuremath{\.{\,\backslash\,}\.{*}} Modification History
 \end{cpar}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
- \ensuremath{\.{\,\backslash\,}}* Last modified \ensuremath{Fri}
- \ensuremath{Jul} 23 20:42:57 \ensuremath{CST} 2021 by \ensuremath{hengxin
+ \ensuremath{\.{\,\backslash\,}\.{*}} Last modified Sat \ensuremath{Jul} 24
+ 07:18:44 \ensuremath{CST} 2021 by \ensuremath{hengxin
 }%
 \end{cpar}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
- \ensuremath{\.{\,\backslash\,}}* Last modified \ensuremath{Thu}
+ \ensuremath{\.{\,\backslash\,}\.{*}} Last modified \ensuremath{Thu}
  \ensuremath{Jul} 08 20:18:10 \ensuremath{CST} 2021 by \ensuremath{eric
 }%
 \end{cpar}%
 \begin{cpar}{0}{F}{F}{0}{0}{}%
- \ensuremath{\.{\,\backslash\,}}* Created Sat \ensuremath{Jun} 26 16:04:39
+ \ensuremath{\.{\,\backslash\,}\.{*}} Created Sat \ensuremath{Jun} 26 16:04:39
  \ensuremath{CST} 2021 by \ensuremath{eric
 }%
 \end{cpar}%
