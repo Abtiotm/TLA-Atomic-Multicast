@@ -32,9 +32,7 @@ VARIABLES
 pvars == <<clock, phase, localTS, globalTS, delivered>>
 vars == <<clock, phase, localTS, globalTS, delivered, incoming, sent>>
 ----------------------------------------------------------------------------
-MaxTS == Cardinality(Msg) * Cardinality(Proc)
-
-TS == [c : 0 .. MaxTS, p : Proc] \* c for counter
+TS == [c : 0 .. Cardinality(Msg), p : Proc] \* c for counter
 
 GT(u, v) == \* Is u > v?
     \/ u.c > v.c
@@ -63,7 +61,7 @@ SendAndRemove(smsg, sender, rmsg) ==
                                                  ELSE incoming[p]]
 ----------------------------------------------------------------------------
 TypeOK ==
-    /\ clock     \in [Proc -> 0 .. MaxTS]
+    /\ clock     \in [Proc -> 0 .. Cardinality(Msg)]
     /\ phase     \in [Proc -> [Msg -> {"START", "PROPOSED", "COMMITTED"}]]
     /\ localTS   \in [Proc -> [Msg -> TS]]
     /\ globalTS  \in [Proc -> [Msg -> TS]]
@@ -148,6 +146,6 @@ THEOREM UniqueGTSTheorem == Spec => []UniqueGTS
 THEOREM SameGTSTheorem == Spec => []SameGTS
 =============================================================================
 \* Modification History
-\* Last modified Fri Jul 23 21:11:47 CST 2021 by hengxin
+\* Last modified Fri Jul 23 20:42:57 CST 2021 by hengxin
 \* Last modified Thu Jul 08 20:18:10 CST 2021 by eric
 \* Created Sat Jun 26 16:04:39 CST 2021 by eric
