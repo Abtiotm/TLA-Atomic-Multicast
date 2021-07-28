@@ -1,0 +1,24 @@
+strict digraph DiskGraph {
+edge [colorscheme="paired12"]
+nodesep=0.35;
+subgraph cluster_graph {
+color="white";
+-5334438964547518817 [label="/\\ phase = (p1 :> (m1 :> \"START\"))\n/\\ delivered = (p1 :> (m1 :> FALSE))\n/\\ clock = (p1 :> 0)\n/\\ globalTS = (p1 :> (m1 :> [c |-> 0, p |-> p1]))\n/\\ sent = {}\n/\\ incoming = (p1 :> {})\n/\\ localTS = (p1 :> (m1 :> [c |-> 0, p |-> p1]))",style = filled]
+-5334438964547518817 -> -6648460118385765597 [label="",color="2",fontcolor="2"];
+-6648460118385765597 [label="/\\ phase = (p1 :> (m1 :> \"START\"))\n/\\ delivered = (p1 :> (m1 :> FALSE))\n/\\ clock = (p1 :> 0)\n/\\ globalTS = (p1 :> (m1 :> [c |-> 0, p |-> p1]))\n/\\ sent = {m1}\n/\\ incoming = (p1 :> {[type |-> \"MULTICAST\", m |-> m1]})\n/\\ localTS = (p1 :> (m1 :> [c |-> 0, p |-> p1]))"];
+-6648460118385765597 -> 6097065443471890529 [label="",color="3",fontcolor="3"];
+6097065443471890529 [label="/\\ phase = (p1 :> (m1 :> \"PROPOSED\"))\n/\\ delivered = (p1 :> (m1 :> FALSE))\n/\\ clock = (p1 :> 1)\n/\\ globalTS = (p1 :> (m1 :> [c |-> 0, p |-> p1]))\n/\\ sent = {m1}\n/\\ incoming = (p1 :> {[p |-> p1, type |-> \"PROPOSE\", m |-> m1, lts |-> [c |-> 1, p |-> p1]]})\n/\\ localTS = (p1 :> (m1 :> [c |-> 1, p |-> p1]))"];
+6097065443471890529 -> -2315913237861471195 [label="",color="4",fontcolor="4"];
+-2315913237861471195 [label="/\\ phase = (p1 :> (m1 :> \"COMMITTED\"))\n/\\ delivered = (p1 :> (m1 :> TRUE))\n/\\ clock = (p1 :> 1)\n/\\ globalTS = (p1 :> (m1 :> [c |-> 1, p |-> p1]))\n/\\ sent = {m1}\n/\\ incoming = (p1 :> {[p |-> p1, type |-> \"PROPOSE\", m |-> m1, lts |-> [c |-> 1, p |-> p1]]})\n/\\ localTS = (p1 :> (m1 :> [c |-> 1, p |-> p1]))"];
+-2315913237861471195 -> -2315913237861471195 [label="",color="4",fontcolor="4"];
+{rank = same; -5334438964547518817;}
+{rank = same; -6648460118385765597;}
+{rank = same; 6097065443471890529;}
+{rank = same; -2315913237861471195;}
+}
+subgraph cluster_legend {graph[style=bold];label = "Next State Actions" style="solid"
+node [ labeljust="l",colorscheme="paired12",style=filled,shape=record ]
+Multicast [label="Multicast",fillcolor=2]
+Deliver [label="Deliver",fillcolor=4]
+Propose [label="Propose",fillcolor=3]
+}}

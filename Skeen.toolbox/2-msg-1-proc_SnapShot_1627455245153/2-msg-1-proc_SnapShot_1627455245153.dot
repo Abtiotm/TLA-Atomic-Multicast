@@ -1,0 +1,52 @@
+strict digraph DiskGraph {
+edge [colorscheme="paired12"]
+nodesep=0.35;
+subgraph cluster_graph {
+color="white";
+-8705942149306951838 [label="/\\ phase = (p1 :> (m1 :> \"START\" @@ m2 :> \"START\"))\n/\\ delivered = (p1 :> (m1 :> FALSE @@ m2 :> FALSE))\n/\\ clock = (p1 :> 0)\n/\\ globalTS = (p1 :> (m1 :> [c |-> 0, p |-> p1] @@ m2 :> [c |-> 0, p |-> p1]))\n/\\ sent = {}\n/\\ incoming = (p1 :> {})\n/\\ localTS = (p1 :> (m1 :> [c |-> 0, p |-> p1] @@ m2 :> [c |-> 0, p |-> p1]))",style = filled]
+-8705942149306951838 -> -5262117310140110597 [label="",color="2",fontcolor="2"];
+-5262117310140110597 [label="/\\ phase = (p1 :> (m1 :> \"START\" @@ m2 :> \"START\"))\n/\\ delivered = (p1 :> (m1 :> FALSE @@ m2 :> FALSE))\n/\\ clock = (p1 :> 0)\n/\\ globalTS = (p1 :> (m1 :> [c |-> 0, p |-> p1] @@ m2 :> [c |-> 0, p |-> p1]))\n/\\ sent = {m1}\n/\\ incoming = (p1 :> {[type |-> \"MULTICAST\", m |-> m1]})\n/\\ localTS = (p1 :> (m1 :> [c |-> 0, p |-> p1] @@ m2 :> [c |-> 0, p |-> p1]))"];
+-8705942149306951838 -> -5262117310140110597 [label="",color="2",fontcolor="2"];
+-5262117310140110597 -> -1430222709457085014 [label="",color="2",fontcolor="2"];
+-1430222709457085014 [label="/\\ phase = (p1 :> (m1 :> \"START\" @@ m2 :> \"START\"))\n/\\ delivered = (p1 :> (m1 :> FALSE @@ m2 :> FALSE))\n/\\ clock = (p1 :> 0)\n/\\ globalTS = (p1 :> (m1 :> [c |-> 0, p |-> p1] @@ m2 :> [c |-> 0, p |-> p1]))\n/\\ sent = {m1, m2}\n/\\ incoming = (p1 :> {[type |-> \"MULTICAST\", m |-> m1], [type |-> \"MULTICAST\", m |-> m2]})\n/\\ localTS = (p1 :> (m1 :> [c |-> 0, p |-> p1] @@ m2 :> [c |-> 0, p |-> p1]))"];
+-1430222709457085014 -> -4508047085310376812 [label="",color="3",fontcolor="3"];
+-4508047085310376812 [label="/\\ phase = (p1 :> (m1 :> \"PROPOSED\" @@ m2 :> \"START\"))\n/\\ delivered = (p1 :> (m1 :> FALSE @@ m2 :> FALSE))\n/\\ clock = (p1 :> 1)\n/\\ globalTS = (p1 :> (m1 :> [c |-> 0, p |-> p1] @@ m2 :> [c |-> 0, p |-> p1]))\n/\\ sent = {m1, m2}\n/\\ incoming = ( p1 :>\n      { [type |-> \"MULTICAST\", m |-> m2],\n        [ p |-> p1,\n          type |-> \"PROPOSE\",\n          m |-> m1,\n          lts |-> [c |-> 1, p |-> p1] ] } )\n/\\ localTS = (p1 :> (m1 :> [c |-> 1, p |-> p1] @@ m2 :> [c |-> 0, p |-> p1]))"];
+-5262117310140110597 -> 528452430913583110 [label="",color="3",fontcolor="3"];
+528452430913583110 [label="/\\ phase = (p1 :> (m1 :> \"PROPOSED\" @@ m2 :> \"START\"))\n/\\ delivered = (p1 :> (m1 :> FALSE @@ m2 :> FALSE))\n/\\ clock = (p1 :> 1)\n/\\ globalTS = (p1 :> (m1 :> [c |-> 0, p |-> p1] @@ m2 :> [c |-> 0, p |-> p1]))\n/\\ sent = {m1}\n/\\ incoming = (p1 :> {[p |-> p1, type |-> \"PROPOSE\", m |-> m1, lts |-> [c |-> 1, p |-> p1]]})\n/\\ localTS = (p1 :> (m1 :> [c |-> 1, p |-> p1] @@ m2 :> [c |-> 0, p |-> p1]))"];
+-1430222709457085014 -> -4508047085310376812 [label="",color="3",fontcolor="3"];
+-4508047085310376812 -> -716123604275335463 [label="",color="3",fontcolor="3"];
+-716123604275335463 [label="/\\ phase = (p1 :> (m1 :> \"PROPOSED\" @@ m2 :> \"PROPOSED\"))\n/\\ delivered = (p1 :> (m1 :> FALSE @@ m2 :> FALSE))\n/\\ clock = (p1 :> 2)\n/\\ globalTS = (p1 :> (m1 :> [c |-> 0, p |-> p1] @@ m2 :> [c |-> 0, p |-> p1]))\n/\\ sent = {m1, m2}\n/\\ incoming = ( p1 :>\n      { [p |-> p1, type |-> \"PROPOSE\", m |-> m1, lts |-> [c |-> 1, p |-> p1]],\n        [ p |-> p1,\n          type |-> \"PROPOSE\",\n          m |-> m2,\n          lts |-> [c |-> 2, p |-> p1] ] } )\n/\\ localTS = (p1 :> (m1 :> [c |-> 1, p |-> p1] @@ m2 :> [c |-> 2, p |-> p1]))"];
+528452430913583110 -> -4508047085310376812 [label="",color="2",fontcolor="2"];
+528452430913583110 -> -785128237408159836 [label="",color="4",fontcolor="4"];
+-785128237408159836 [label="/\\ phase = (p1 :> (m1 :> \"COMMITTED\" @@ m2 :> \"START\"))\n/\\ delivered = (p1 :> (m1 :> TRUE @@ m2 :> FALSE))\n/\\ clock = (p1 :> 1)\n/\\ globalTS = (p1 :> (m1 :> [c |-> 1, p |-> p1] @@ m2 :> [c |-> 0, p |-> p1]))\n/\\ sent = {m1}\n/\\ incoming = (p1 :> {[p |-> p1, type |-> \"PROPOSE\", m |-> m1, lts |-> [c |-> 1, p |-> p1]]})\n/\\ localTS = (p1 :> (m1 :> [c |-> 1, p |-> p1] @@ m2 :> [c |-> 0, p |-> p1]))"];
+-716123604275335463 -> -4938221685558597264 [label="",color="4",fontcolor="4"];
+-4938221685558597264 [label="/\\ phase = (p1 :> (m1 :> \"COMMITTED\" @@ m2 :> \"PROPOSED\"))\n/\\ delivered = (p1 :> (m1 :> TRUE @@ m2 :> FALSE))\n/\\ clock = (p1 :> 2)\n/\\ globalTS = (p1 :> (m1 :> [c |-> 1, p |-> p1] @@ m2 :> [c |-> 0, p |-> p1]))\n/\\ sent = {m1, m2}\n/\\ incoming = ( p1 :>\n      { [p |-> p1, type |-> \"PROPOSE\", m |-> m1, lts |-> [c |-> 1, p |-> p1]],\n        [ p |-> p1,\n          type |-> \"PROPOSE\",\n          m |-> m2,\n          lts |-> [c |-> 2, p |-> p1] ] } )\n/\\ localTS = (p1 :> (m1 :> [c |-> 1, p |-> p1] @@ m2 :> [c |-> 2, p |-> p1]))"];
+-4508047085310376812 -> 5284082810143436231 [label="",color="4",fontcolor="4"];
+5284082810143436231 [label="/\\ phase = (p1 :> (m1 :> \"COMMITTED\" @@ m2 :> \"START\"))\n/\\ delivered = (p1 :> (m1 :> TRUE @@ m2 :> FALSE))\n/\\ clock = (p1 :> 1)\n/\\ globalTS = (p1 :> (m1 :> [c |-> 1, p |-> p1] @@ m2 :> [c |-> 0, p |-> p1]))\n/\\ sent = {m1, m2}\n/\\ incoming = ( p1 :>\n      { [type |-> \"MULTICAST\", m |-> m2],\n        [ p |-> p1,\n          type |-> \"PROPOSE\",\n          m |-> m1,\n          lts |-> [c |-> 1, p |-> p1] ] } )\n/\\ localTS = (p1 :> (m1 :> [c |-> 1, p |-> p1] @@ m2 :> [c |-> 0, p |-> p1]))"];
+-785128237408159836 -> 5284082810143436231 [label="",color="2",fontcolor="2"];
+-716123604275335463 -> 4874689448767391709 [label="",color="4",fontcolor="4"];
+4874689448767391709 [label="/\\ phase = (p1 :> (m1 :> \"PROPOSED\" @@ m2 :> \"COMMITTED\"))\n/\\ delivered = (p1 :> (m1 :> FALSE @@ m2 :> FALSE))\n/\\ clock = (p1 :> 2)\n/\\ globalTS = (p1 :> (m1 :> [c |-> 0, p |-> p1] @@ m2 :> [c |-> 2, p |-> p1]))\n/\\ sent = {m1, m2}\n/\\ incoming = ( p1 :>\n      { [p |-> p1, type |-> \"PROPOSE\", m |-> m1, lts |-> [c |-> 1, p |-> p1]],\n        [ p |-> p1,\n          type |-> \"PROPOSE\",\n          m |-> m2,\n          lts |-> [c |-> 2, p |-> p1] ] } )\n/\\ localTS = (p1 :> (m1 :> [c |-> 1, p |-> p1] @@ m2 :> [c |-> 2, p |-> p1]))"];
+-785128237408159836 -> -785128237408159836 [label="",color="4",fontcolor="4"];
+-4938221685558597264 -> -4938221685558597264 [label="",color="4",fontcolor="4"];
+5284082810143436231 -> -4938221685558597264 [label="",color="3",fontcolor="3"];
+5284082810143436231 -> 5284082810143436231 [label="",color="4",fontcolor="4"];
+4874689448767391709 -> -4934982937848993564 [label="",color="4",fontcolor="4"];
+-4938221685558597264 -> -4934982937848993564 [label="",color="4",fontcolor="4"];
+-4934982937848993564 [label="/\\ phase = (p1 :> (m1 :> \"COMMITTED\" @@ m2 :> \"COMMITTED\"))\n/\\ delivered = (p1 :> (m1 :> TRUE @@ m2 :> TRUE))\n/\\ clock = (p1 :> 2)\n/\\ globalTS = (p1 :> (m1 :> [c |-> 1, p |-> p1] @@ m2 :> [c |-> 2, p |-> p1]))\n/\\ sent = {m1, m2}\n/\\ incoming = ( p1 :>\n      { [p |-> p1, type |-> \"PROPOSE\", m |-> m1, lts |-> [c |-> 1, p |-> p1]],\n        [ p |-> p1,\n          type |-> \"PROPOSE\",\n          m |-> m2,\n          lts |-> [c |-> 2, p |-> p1] ] } )\n/\\ localTS = (p1 :> (m1 :> [c |-> 1, p |-> p1] @@ m2 :> [c |-> 2, p |-> p1]))"];
+4874689448767391709 -> 4874689448767391709 [label="",color="4",fontcolor="4"];
+-4934982937848993564 -> -4934982937848993564 [label="",color="4",fontcolor="4"];
+-4934982937848993564 -> -4934982937848993564 [label="",color="4",fontcolor="4"];
+{rank = same; -8705942149306951838;}
+{rank = same; -5262117310140110597;}
+{rank = same; -1430222709457085014;528452430913583110;}
+{rank = same; -785128237408159836;-4508047085310376812;}
+{rank = same; -716123604275335463;5284082810143436231;}
+{rank = same; 4874689448767391709;-4938221685558597264;}
+{rank = same; -4934982937848993564;}
+}
+subgraph cluster_legend {graph[style=bold];label = "Next State Actions" style="solid"
+node [ labeljust="l",colorscheme="paired12",style=filled,shape=record ]
+Multicast [label="Multicast",fillcolor=2]
+Deliver [label="Deliver",fillcolor=4]
+Propose [label="Propose",fillcolor=3]
+}}
